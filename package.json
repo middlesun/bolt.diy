@@ -44,6 +44,7 @@
     "node": ">=18.18.0"
   },
   "dependencies": {
+    "@remix-run/cloudflare-pages": "^2.0.0",
     "@ai-sdk/amazon-bedrock": "1.0.6",
     "@ai-sdk/anthropic": "0.0.39",
     "@ai-sdk/cohere": "1.0.3",
