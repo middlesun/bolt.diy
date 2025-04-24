@@ -186,6 +186,10 @@ export const ChatImpl = memo(
     const [animationScope, animate] = useAnimate();
 
     const [apiKeys, setApiKeys] = useState<Record<string, string>>({});
+    useEffect(() => {
+  Cookies.set('apiKeys', JSON.stringify(apiKeys), { expires: 30 });
+}, [apiKeys]);
+
 
     const {
       messages,
