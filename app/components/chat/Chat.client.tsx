@@ -64,6 +64,21 @@ export function Chat() {
   ))}
 </select>
 
+
+          <div className="text-sm text-white mb-4">
+      OpenRouter API Key:
+      <input
+        type="password"
+        value={apiKeys['openrouter'] || ''}
+        onChange={(e) =>
+          setApiKeys((prev) => ({ ...prev, openrouter: e.target.value }))
+        }
+        className="ml-2 bg-gray-900 border border-gray-700 px-2 py-1 rounded w-80"
+        placeholder="Enter your OpenRouter API key"
+      />
+    </div>
+
+
       {ready && (
         <ChatImpl
           description={title}
