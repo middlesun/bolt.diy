@@ -36,8 +36,9 @@ const toastAnimation = cssTransition({
 });
 
 const logger = createScopedLogger('Chat');
-
 export function Chat() {
+  const [selectedAgent, setSelectedAgent] = useState(agents[0]);
+
   renderLogger.trace('Chat');
 
   const { ready, initialMessages, storeMessageHistory, importChat, exportChat } = useChatHistory();
