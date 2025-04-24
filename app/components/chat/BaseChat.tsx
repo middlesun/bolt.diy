@@ -15,7 +15,6 @@ import { SendButton } from './SendButton.client';
 import { APIKeyManager, getApiKeysFromCookies } from './APIKeyManager';
 import Cookies from 'js-cookie';
 import * as Tooltip from '@radix-ui/react-tooltip';
-
 import styles from './BaseChat.module.scss';
 import { ExportChatButton } from '~/components/chat/chatExportAndImport/ExportChatButton';
 import { ImportButtons } from '~/components/chat/chatExportAndImport/ImportButtons';
@@ -131,6 +130,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     const [transcript, setTranscript] = useState('');
     const [isModelLoading, setIsModelLoading] = useState<string | undefined>('all');
     const [progressAnnotations, setProgressAnnotations] = useState<ProgressAnnotation[]>([]);
+    const [selectedAgent, setSelectedAgent] = useState(agents[0]);
     useEffect(() => {
       if (data) {
         const progressList = data.filter(
@@ -434,7 +434,8 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     <ClientOnly>
                       {() => (
                         <div className={isModelSettingsCollapsed ? 'hidden' : ''}>
-                          {/*<ModelSelector
+                          {/*
+                          <ModelSelector
                             key={provider?.name + ':' + modelList.length}
                             model={model}
                             setModel={setModel}
@@ -446,6 +447,25 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                             modelLoading={isModelLoading}
                           />
                           */}
+
+                          <div className="mb-3">
+  <select
+    className="bg-gray-800 text-white px-3 py-2 rounded-md"
+    value={selectedAgent.id}
+    onChange={(e) => {
+      const agent = agents.find(a => a.id === e.target.value);
+      if (agent) setSelectedAgent(agent);
+    }}
+  >
+    {agents.map(agent => (
+      <option key={agent.id} value={agent.id}>
+        {agent.name}
+      </option>
+    ))}
+  </select>
+</div>
+
+                          
                           {(providerList || []).length > 0 &&
                             provider &&
                             (!LOCAL_PROVIDERS.includes(provider.name) || 'OpenAILike') && (
