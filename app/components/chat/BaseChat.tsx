@@ -23,7 +23,7 @@ import { ExamplePrompts } from '~/components/chat/ExamplePrompts';
 import GitCloneButton from './GitCloneButton';
 
 import FilePreview from './FilePreview';
-import { ModelSelector } from '~/components/chat/ModelSelector';
+// import { ModelSelector } from '~/components/chat/ModelSelector';
 import { SpeechRecognitionButton } from '~/components/chat/SpeechRecognition';
 import type { ProviderInfo } from '~/types/model';
 import { ScreenshotStateManager } from './ScreenshotStateManager';
@@ -434,7 +434,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     <ClientOnly>
                       {() => (
                         <div className={isModelSettingsCollapsed ? 'hidden' : ''}>
-                          <ModelSelector
+                          {/*<ModelSelector
                             key={provider?.name + ':' + modelList.length}
                             model={model}
                             setModel={setModel}
@@ -445,6 +445,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                             apiKeys={apiKeys}
                             modelLoading={isModelLoading}
                           />
+                          */}
                           {(providerList || []).length > 0 &&
                             provider &&
                             (!LOCAL_PROVIDERS.includes(provider.name) || 'OpenAILike') && (
