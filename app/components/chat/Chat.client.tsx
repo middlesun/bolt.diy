@@ -78,6 +78,24 @@ export function Chat() {
       />
     </div>
 
+      <div className="mb-4">
+  <label className="block text-sm text-white mb-1">Choose Assistant</label>
+  <select
+    className="bg-gray-800 text-white px-3 py-2 rounded-md w-full"
+    value={selectedAgent.id}
+    onChange={(e) => {
+      const agent = agents.find(a => a.id === e.target.value);
+      if (agent) setSelectedAgent(agent);
+    }}
+  >
+    {agents.map(agent => (
+      <option key={agent.id} value={agent.id}>
+        {agent.name}
+      </option>
+    ))}
+  </select>
+</div>
+
 
       {ready && (
         <ChatImpl
