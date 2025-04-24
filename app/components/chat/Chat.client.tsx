@@ -70,6 +70,8 @@ export function Chat() {
           initialMessages={initialMessages}
           exportChat={exportChat}
           storeMessageHistory={storeMessageHistory}
+          systemPrompt={selectedAgent.systemPrompt}
+          systemModel={selectedAgent.model}
           importChat={importChat}
         />
       )}
