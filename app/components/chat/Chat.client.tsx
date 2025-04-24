@@ -131,6 +131,10 @@ interface ChatProps {
   importChat: (description: string, messages: Message[]) => Promise<void>;
   exportChat: () => void;
   description?: string;
+
+   systemPrompt: string;
+  systemModel: string;
+  
 }
 
 export const ChatImpl = memo(
