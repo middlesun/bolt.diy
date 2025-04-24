@@ -192,6 +192,8 @@ export const ChatImpl = memo(
         files,
         promptId,
         contextOptimization: contextOptimizationEnabled,
+        systemPrompt,            // ✅ ADD THIS
+        model: systemModel,      // ✅ AND THIS
         supabase: {
           isConnected: supabaseConn.isConnected,
           hasSelectedProject: !!selectedProject,
